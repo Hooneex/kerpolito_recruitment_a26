@@ -41,6 +41,13 @@ body.menu-open {
   overflow: hidden;
 }
 
+.svg-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 img,
 svg {
   display: block;
@@ -529,6 +536,9 @@ h3 {
 .telegram-card {
   position: relative;
   display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   min-height: clamp(260px, 25vw, 360px);
   align-items: flex-end;
   justify-content: space-between;
@@ -540,12 +550,24 @@ h3 {
   background: var(--ker-purple);
   color: var(--white);
   box-shadow: 14px 15px 0 rgba(0, 0, 0, 0.24);
+  overflow: hidden;
   transition: transform 240ms var(--ease), background-color 180ms ease, box-shadow 240ms var(--ease);
 }
 
 .telegram-copy {
   display: grid;
+  min-width: 0;
   gap: 1.25rem;
+}
+
+.telegram-icon {
+  position: absolute;
+  top: clamp(1.6rem, 3vw, 3rem);
+  right: clamp(1.6rem, 3vw, 3rem);
+  width: clamp(3.2rem, 5vw, 5.2rem);
+  height: auto;
+  fill: currentColor;
+  opacity: 0.92;
 }
 
 .telegram-card strong {
@@ -612,13 +634,29 @@ h3 {
   transition: transform 200ms var(--ease), background-color 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 200ms var(--ease);
 }
 
-.social-grid span {
+.social-grid .social-label {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.65rem;
   font-family: var(--display);
   font-size: clamp(1.55rem, 2.35vw, 2.35rem);
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 0.95;
   text-transform: uppercase;
+}
+
+.social-label svg {
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
+.social-label em {
+  min-width: 0;
+  font-style: normal;
 }
 
 .social-grid small {
@@ -1080,6 +1118,61 @@ h3 {
   box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.25);
 }
 
+.panel-actions {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.panel-actions .panel-apply {
+  margin-top: 0;
+}
+
+.calendar-button {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+  padding: 0.85rem 1rem 0.72rem;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.045em;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 180ms var(--ease), background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.panel-actions .calendar-button {
+  margin-top: 0;
+}
+
+.calendar-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
+.calendar-button:hover,
+.calendar-button:focus-visible {
+  transform: translateY(-3px) rotate(-0.5deg);
+  border-color: var(--ker-yellow);
+  background: var(--ker-yellow);
+  color: var(--ink);
+}
+
+.calendar-button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
 .faq-section {
   background: var(--paper);
   color: var(--ink);
@@ -1188,9 +1281,90 @@ h3 {
 }
 
 .site-footer {
-  padding-block: 2.5rem;
+  padding-block: 0 2.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   background: #080908;
+}
+
+.footer-socials {
+  padding-block: clamp(4rem, 7vw, 7rem);
+}
+
+.footer-socials-heading {
+  display: grid;
+  grid-template-columns: 0.55fr 1.45fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+
+.footer-socials-heading p {
+  max-width: 320px;
+  margin: 0 0 0.4rem;
+  color: rgba(255, 255, 255, 0.62);
+  font-family: var(--editorial);
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.footer-socials-heading h2 {
+  max-width: 980px;
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(4rem, 8vw, 8.4rem);
+  font-weight: 900;
+  letter-spacing: -0.065em;
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
+.footer-social-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.footer-social-grid a {
+  display: grid;
+  min-width: 0;
+  min-height: 142px;
+  place-items: center;
+  align-content: center;
+  gap: 1rem;
+  padding: 1.4rem 0.75rem 1.2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.24);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  color: var(--white);
+  text-align: center;
+  transition: transform 190ms var(--ease), background-color 180ms ease, color 180ms ease;
+}
+
+.footer-social-grid svg {
+  width: clamp(2.4rem, 3.2vw, 3.4rem);
+  height: clamp(2.4rem, 3.2vw, 3.4rem);
+  fill: currentColor;
+}
+
+.footer-social-grid span {
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.footer-social-grid a:hover,
+.footer-social-grid a:focus-visible {
+  z-index: 1;
+  transform: translateY(-5px) rotate(-0.5deg);
+  background: var(--ker-purple);
+}
+
+.footer-social-grid a:active {
+  transform: translateY(1px) scale(0.98);
+  background: var(--ker-yellow);
+  color: var(--ink);
 }
 
 .footer-inner {
@@ -1198,6 +1372,8 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .footer-logo {
@@ -1263,6 +1439,10 @@ h3 {
   }
 
   .social-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-social-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
@@ -1434,6 +1614,15 @@ h3 {
     transform: rotate(-0.6deg);
   }
 
+  .footer-socials-heading {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .footer-socials-heading h2 {
+    max-width: 720px;
+  }
+
   .social-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1587,18 +1776,45 @@ h3 {
   }
 
   .telegram-card {
-    min-height: 230px;
-    padding: 2rem 1.45rem 1.65rem;
+    display: block;
+    width: calc(100% - 8px);
+    min-height: 238px;
+    margin-inline: 4px;
+    padding: 2rem 1.2rem 1.65rem;
+    transform: none;
     border-radius: 36px 14px 40px 18px;
-    box-shadow: 9px 10px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 7px 9px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  .telegram-card:hover,
+  .telegram-card:focus-visible {
+    transform: translateY(-3px);
   }
 
   .telegram-card strong {
-    font-size: clamp(3rem, 15vw, 4.1rem);
+    display: block;
+    padding-right: 2.9rem;
+    font-size: clamp(2.45rem, 12vw, 3.35rem);
+    line-height: 0.9;
   }
 
   .telegram-card small {
+    display: block;
+    padding-right: 2.5rem;
     font-size: 1.03rem;
+    overflow-wrap: anywhere;
+  }
+
+  .telegram-icon {
+    top: 1.3rem;
+    right: 1.2rem;
+    width: 2.35rem;
+  }
+
+  .telegram-card > b {
+    position: absolute;
+    right: 1.25rem;
+    bottom: 1.1rem;
   }
 
   .social-grid {
@@ -1610,7 +1826,8 @@ h3 {
     padding: 1.3rem 0.85rem 1.05rem;
   }
 
-  .social-grid span {
+  .social-grid .social-label {
+    gap: 0.45rem;
     font-size: clamp(1.4rem, 6.4vw, 1.85rem);
   }
 
@@ -1685,6 +1902,33 @@ h3 {
 
   .event-details dd {
     font-size: clamp(1.7rem, 9vw, 2.35rem);
+  }
+
+  .calendar-button {
+    width: 100%;
+  }
+
+  .footer-socials {
+    padding-block: 4rem 3.25rem;
+  }
+
+  .footer-socials-heading h2 {
+    font-size: clamp(3.25rem, 15vw, 4.6rem);
+    line-height: 0.84;
+  }
+
+  .footer-social-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-social-grid a {
+    min-height: 118px;
+    padding: 1.15rem 0.6rem 1rem;
+  }
+
+  .footer-social-grid svg {
+    width: 2.6rem;
+    height: 2.6rem;
   }
 
   .faq-item button {

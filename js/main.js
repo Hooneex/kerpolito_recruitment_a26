@@ -55,6 +55,68 @@
     }
   });
 
+  const calendarEvents = {
+    openMeeting: {
+      title: "Ker(PoliTo) Open Meeting",
+      start: config.openMeetingStart,
+      end: config.openMeetingEnd,
+      location: `${config.openMeetingLocation || ""}, ${config.openMeetingVenue || ""}`,
+      description: "Meet Ker(PoliTo), discover the open roles and ask us about recruitment"
+    },
+    deadline: {
+      title: "Ker(PoliTo) recruitment deadline",
+      start: config.deadlineStart,
+      end: config.deadlineEnd,
+      location: "Online",
+      description: `Last chance to send your application: ${config.applicationUrl || ""}`
+    }
+  };
+
+  const escapeIcsText = (value = "") => String(value)
+    .replace(/\\/g, "\\\\")
+    .replace(/;/g, "\\;")
+    .replace(/,/g, "\\,")
+    .replace(/\n/g, "\\n");
+
+  const formatIcsDate = (value) => new Date(value)
+    .toISOString()
+    .replace(/[-:]/g, "")
+    .replace(/\.\d{3}Z$/, "Z");
+
+  document.querySelectorAll("[data-calendar]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const eventData = calendarEvents[button.dataset.calendar];
+      if (!eventData?.start || !eventData?.end) return;
+
+      const ics = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//KerPoliTo//Recruitment 2026//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "BEGIN:VEVENT",
+        `UID:${button.dataset.calendar}-2026@kerpolito.it`,
+        `DTSTAMP:${formatIcsDate(new Date().toISOString())}`,
+        `DTSTART:${formatIcsDate(eventData.start)}`,
+        `DTEND:${formatIcsDate(eventData.end)}`,
+        `SUMMARY:${escapeIcsText(eventData.title)}`,
+        `DESCRIPTION:${escapeIcsText(eventData.description)}`,
+        `LOCATION:${escapeIcsText(eventData.location)}`,
+        "END:VEVENT",
+        "END:VCALENDAR"
+      ].join("\r\n");
+
+      const url = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
+      const download = document.createElement("a");
+      download.href = url;
+      download.download = `kerpolito-${button.dataset.calendar}.ics`;
+      document.body.append(download);
+      download.click();
+      download.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+  });
+
   const header = document.querySelector("[data-header]");
   const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 24);
   updateHeader();

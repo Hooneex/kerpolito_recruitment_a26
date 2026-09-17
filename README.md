@@ -27,9 +27,16 @@ Edit the `window.KER_CONFIG` object to update:
 - campaign name;
 - Open Meeting date, time, room and venue;
 - application deadline date and time;
+- Open Meeting and deadline start/end timestamps used by the calendar buttons;
 - application, Instagram, Telegram, TikTok, YouTube, Linktree and email links.
 
 The links supplied for the Autumn 2026 campaign are already configured. Update the values in this file when a channel or recruitment form changes.
+
+Keep `openMeetingStart`, `openMeetingEnd`, `deadlineStart` and `deadlineEnd` in ISO 8601 format, including the Italian UTC offset. The two **Save to calendar** buttons generate standard `.ics` files directly in the browser.
+
+## Social icons
+
+The white social logos are lightweight inline SVG symbols in `index.html`, based on the monochrome Simple Icons artwork. No external icon library or runtime request is required.
 
 ## Team photos
 
