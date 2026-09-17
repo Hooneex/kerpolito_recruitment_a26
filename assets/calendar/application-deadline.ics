@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KerPoliTo//Recruitment 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:application-deadline-2026@kerpolito.it
+DTSTAMP:20260917T074500Z
+DTSTART:20261002T213000Z
+DTEND:20261002T215900Z
+SUMMARY:Ker(PoliTo) recruitment deadline
+DESCRIPTION:Last chance to send your application: https://forms.gle/83HHLrQa2bZTSpei6
+LOCATION:Online
+URL:https://forms.gle/83HHLrQa2bZTSpei6
+END:VEVENT
+END:VCALENDAR

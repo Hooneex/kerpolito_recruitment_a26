@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KerPoliTo//Recruitment 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:open-meeting-2026@kerpolito.it
+DTSTAMP:20260917T074500Z
+DTSTART:20261001T170000Z
+DTEND:20261001T180000Z
+SUMMARY:Ker(PoliTo) Open Meeting
+DESCRIPTION:Meet Ker(PoliTo)\, discover the open roles and ask us about recruitment
+LOCATION:Room 9S\, Politecnico di Torino Headquarters
+END:VEVENT
+END:VCALENDAR

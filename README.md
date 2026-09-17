@@ -27,12 +27,11 @@ Edit the `window.KER_CONFIG` object to update:
 - campaign name;
 - Open Meeting date, time, room and venue;
 - application deadline date and time;
-- Open Meeting and deadline start/end timestamps used by the calendar buttons;
 - application, Instagram, Telegram, TikTok, YouTube, Linktree and email links.
 
 The links supplied for the Autumn 2026 campaign are already configured. Update the values in this file when a channel or recruitment form changes.
 
-Keep `openMeetingStart`, `openMeetingEnd`, `deadlineStart` and `deadlineEnd` in ISO 8601 format, including the Italian UTC offset. The two **Save to calendar** buttons generate standard `.ics` files directly in the browser.
+The two **Save to calendar** buttons use the standard `.ics` files in `assets/calendar/`. Update those two files together with the displayed dates when the recruitment cycle changes.
 
 ## Social icons
 
@@ -90,6 +89,9 @@ GitHub will provide the public site URL after deployment. No build command, back
 │   ├── images/
 │   │   ├── kerpolito-logo.png
 │   │   └── team-*.webp
+│   ├── calendar/
+│   │   ├── open-meeting.ics
+│   │   └── application-deadline.ics
 │   └── icons/
 │       └── favicon.svg
 └── README.md
