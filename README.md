@@ -63,6 +63,26 @@ The favicon is stored at:
 assets/icons/favicon.svg
 ```
 
+## Email logo
+
+The original supplied PNG is hosted separately at:
+
+```text
+https://hooneex.github.io/kerpolito_recruitment_a26/assets/email/kerpolito-email-logo.png?v=20261002-original
+```
+
+This asset is not referenced by the website, so it does not appear on the page. The image is 384 × 290 pixels and has white/yellow artwork on a transparent background. Place it on a dark background in emails so the white lettering remains visible. For example:
+
+```html
+<table role="presentation" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td bgcolor="#000000" style="background-color:#000000;">
+      <img src="https://hooneex.github.io/kerpolito_recruitment_a26/assets/email/kerpolito-email-logo.png?v=20261002-original" alt="Ker(PoliTo)" width="384" height="290" style="display:block;border:0;">
+    </td>
+  </tr>
+</table>
+```
+
 ## Publish for free with GitHub Pages
 
 1. Create a GitHub repository and upload the full contents of this folder.
